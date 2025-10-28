@@ -26,6 +26,7 @@ Explanation:
 from typing import List
 
 
+#how many 1's appear in binary form for every number 0 -> n 
 def countBits( n:int) -> List[int]: 
     #initialize values with 0 
     ans = [0] * (n+1)
@@ -43,7 +44,8 @@ if __name__ == '__main__':
     testinput1= 2
     testinput2 = 5
 
-    print(countBits(testinput1)) 
-    print(countBits(testinput2))
+    print(f"{testinput1} --> {countBits(testinput1)}")
+    print(f"{testinput2} --> {countBits(testinput2)}")
+
     
 
