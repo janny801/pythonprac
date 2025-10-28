@@ -23,3 +23,27 @@ Explanation:
 5 --> 101
 '''
 
+from typing import List
+
+
+def countBits( n:int) -> List[int]: 
+    #initialize values with 0 
+    ans = [0] * (n+1)
+
+    #iterate thu 
+    #//2 divide by 2+ (%2) remainder 
+        #for each value up to (and including) n 
+
+    for curr in range(1, n+1):
+        ans[curr] = ans[curr//2] + (curr%2)
+    return ans
+
+if __name__ == '__main__': 
+    #main func 
+    testinput1= 2
+    testinput2 = 5
+
+    print(countBits(testinput1)) 
+    print(countBits(testinput2))
+    
+
