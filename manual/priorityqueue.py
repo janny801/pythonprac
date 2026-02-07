@@ -42,6 +42,9 @@ class priorityqueue:
         if not self.heap: 
             return None #if empty --> nothing to return 
 
+        if len(self.heap)==1: 
+            return self.heap.pop()
+
         #save the root item 
         top = self.heap[0]
         self.heap[0] = self.heap.pop() #remove last element and move it to the root 
@@ -60,10 +63,10 @@ class priorityqueue:
             smallest = i 
 
             #if left child is smaller then the current smallest update 
-            if left< len(self.heap) and self.heap[left][0] < self.heap[smallest]: 
+            if left< len(self.heap) and self.heap[left][0] < self.heap[smallest][0]: 
                 smallest = left
             #if right child is smaller then current smallest update 
-            if right<len(self.heap) and self.heap[right][0] < self.heap[smallest]: 
+            if right<len(self.heap) and self.heap[right][0] < self.heap[smallest][0]: 
                 smallest = right
             
             #if smallest is not 'i' --> one of the children are smaller and swap is needed
@@ -78,9 +81,39 @@ class priorityqueue:
                 break
         return top #returns item that was originally at the root 
 
+def main():
+    # create the priority queue
+    pq = priorityqueue()
+
+    # initial tasks (priority, task_name)
+    tasks = [
+        (3, "do laundry"),
+        (1, "finish homework"),
+        (2, "buy groceries"),
+        (0, "emergency task")
+    ]
+
+    print("ADDING TASKS\n")
+
+    # add tasks one by one and print heap after each add
+    for task in tasks:
+        pq.push(task)
+        print("added:", task)
+        print("current heap:", pq.heap)
+        print()
+
+    print("REMOVING TASKS\n")
+
+    # remove tasks one by one and print heap after each removal
+    while pq.heap:
+        removed = pq.pop()
+        print("removed:", removed)
+        print("current heap:", pq.heap)
+        print()
 
 
-
+if __name__ == "__main__":
+    main()
         
 
 
